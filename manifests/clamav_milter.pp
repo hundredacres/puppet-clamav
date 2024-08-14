@@ -5,7 +5,7 @@
 class clamav::clamav_milter {
 
   unless ($facts['os']['family'] == 'RedHat') and (versioncmp($facts['os']['release']['full']release, '7.0') >= 0) {
-    fail("OS family ${::osfamily}-${::operatingsystemrelease} is not supported. Only RedHat >= 7 is suppported.")
+    fail("OS family ${facts['os']['family']}-${facts['os']['release']['full']} is not supported. Only RedHat >= 7 is suppported.")
   }
 
   $config_options = $clamav::_clamav_milter_options

@@ -183,7 +183,7 @@ class clamav::params {
     $freshclam_default_updatelogfile  = '/var/log/clamav/freshclam.log'
 
   } else {
-    fail("The ${module_name} module is not supported on a ${::osfamily} based system with version ${::operatingsystemrelease}.")
+    fail("The ${module_name} module is not supported on a ${facts['os']['family']} based system with version ${facts['os']['release']['full']}.")
   }
 
   $clamd_default_options = {
