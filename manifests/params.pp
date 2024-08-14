@@ -18,7 +18,7 @@ class clamav::params {
   $clamav_milter_service_ensure = 'running'
   $clamav_milter_service_enable = true
 
-  if ($::osfamily == 'RedHat') and (versioncmp($::operatingsystemrelease, '6.0') >= 0) {
+  if ($facts['os']['family'] == 'RedHat') and (versioncmp($::operatingsystemrelease, '6.0') >= 0) {
     # ### init vars ####
     $manage_repo    = true
     $clamav_package = 'clamav'
@@ -127,7 +127,7 @@ class clamav::params {
     $clamd_default_temporarydirectory = '/var/tmp'
     $freshclam_default_pidfile        = undef # cron is used
 
-  } elsif ($::osfamily == 'Debian') and (
+  } elsif ($facts['os']['family'] == 'Debian') and (
     (($::operatingsystem == 'Debian') and (versioncmp($::operatingsystemrelease, '7.0') >= 0)) or
     (($::operatingsystem == 'Ubuntu') and (versioncmp($::operatingsystemrelease, '12.0') >= 0))
   ) {
